@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World History Quiz: World History</title>
+    <style>
+        /* Styling for the quiz */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f4f4;
+        }
+
+        #quiz-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        #question-container {
+            margin-top: 20px;
+        }
+
+        .choice-button {
+            display: block;
+            margin: 10px 0;
+            padding: 10px 20px;
+            background: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-align: left;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        .choice-button:hover {
+            background: #0056b3;
+        }
+
+        #feedback {
+            margin-top: 20px;
+            padding: 10px;
+            background: #f9f9f9;
+            border-left: 5px solid #ccc;
+        }
+
+        #next-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: none;
+        }
+
+        #next-button:disabled {
+            background: #aaa;
+        }
+    </style>
+</head>
+<body>
+    <div id="quiz-container">
+        <h1>World History Quiz: EURO STIMULUS1 Quiz</h1>
+        <div id="question-container"></div>
+        <button id="next-button">Next Question</button>
+        <div id="feedback"></div>
+    </div>
+    <script>
+        // JavaScript for quiz functionality
+        const questions = [
+{
+    question: "Excerpt from Christopher Columbus's Letter to Ferdinand and Isabella (1493): \n\n'In conclusion, to speak only of what has been done during this voyage: their Highnesses can see that I will give them as much gold as they need...and slaves, as many as they shall order to be shipped.'\n\nWhat does this excerpt reveal about Columbus's motivations?",
+    choices: [
+        "Religious conversion of indigenous peoples",
+        "The economic exploitation of resources and labor",
+        "Establishing peaceful relations with native populations",
+        "Scientific exploration and discovery"
+    ],
+    correctAnswer: 1,
+    explanation: "Columbus's letter emphasizes the acquisition of wealth and labor, reflecting the economic motivations of European exploration."
+},
+{
+    question: "Excerpt from Bartolomé de las Casas, A Short Account of the Destruction of the Indies (1552): \n\n'The Christians, with their horses and swords and lances, began to slaughter and practice strange cruelties among them. These cruelties terrified the Indians to such a degree that they were afraid to come near the Christians.'\n\nWhat perspective does Las Casas provide on European colonization?",
+    choices: [
+        "It glorifies the bravery of European settlers",
+        "It criticizes the violence and mistreatment of indigenous peoples",
+        "It defends the actions of conquistadors",
+        "It promotes the spread of Christianity through peaceful means"
+    ],
+    correctAnswer: 1,
+    explanation: "Las Casas criticized the brutality of European colonizers and advocated for the rights of indigenous peoples."
+},
+{
+    question: "Excerpt from Vasco da Gama’s account of reaching India (1498): \n\n'We Christians and Indians stood looking at each other, wondering at the color of each other's skin and hair. I ordered goods brought forth to barter with the local merchants.'\n\nWhat does this excerpt highlight about early encounters between Europeans and other cultures?",
+    choices: [
+        "The immediate hostility between Europeans and locals",
+        "Curiosity and the establishment of trade relationships",
+        "Religious conversions by force",
+        "The eradication of native cultures"
+    ],
+    correctAnswer: 1,
+    explanation: "Da Gama’s account emphasizes mutual curiosity and the beginnings of trade between Europeans and Indian merchants."
+},
+{
+    question: "Excerpt from the Treaty of Tordesillas (1494): \n\n'The said line shall be drawn straight, as determined by the Pope, to divide the domains of Portugal and Spain in the newly discovered lands.'\n\nWhat was the main purpose of the Treaty of Tordesillas?",
+    choices: [
+        "To establish peaceful relations with indigenous peoples",
+        "To divide newly discovered territories between Portugal and Spain",
+        "To create alliances with other European powers",
+        "To establish trading rights for the Dutch and French"
+    ],
+    correctAnswer: 1,
+    explanation: "The Treaty of Tordesillas divided newly discovered lands between Portugal and Spain to avoid conflict between these two powers."
+},
+{
+    question: "Excerpt from Hernán Cortés’s Letter to Charles V (1520): \n\n'Your Majesty must realize that the main motive for our journey was to serve God and Your Highness and to bring light to those who dwell in darkness.'\n\nWhat justification does Cortés provide for his actions in the Americas?",
+    choices: [
+        "Personal wealth and power",
+        "Religious conversion and loyalty to Spain",
+        "Scientific exploration and discovery",
+        "Trade and economic gain"
+    ],
+    correctAnswer: 1,
+    explanation: "Cortés justified his conquest by framing it as a mission to spread Christianity and serve Spain."
+},
+{
+    question: "Excerpt from The Journal of Ferdinand Magellan (1521): \n\n'We discovered an island in the middle of the ocean, inhabited by people who were naked. They showed us great hospitality, bringing us food and gifts.'\n\nWhat does this excerpt reveal about early exploration?",
+    choices: [
+        "It focused solely on the exploitation of native peoples",
+        "Explorers often relied on the goodwill of indigenous populations",
+        "There was immediate conflict between Europeans and locals",
+        "Exploration avoided contact with native cultures"
+    ],
+    correctAnswer: 1,
+    explanation: "Magellan's account highlights the hospitality of indigenous populations and the dependence of explorers on local support."
+},
+{
+    question: "Excerpt from Adam Smith’s The Wealth of Nations (1776): \n\n'The discovery of America, and that of a passage to the East Indies by the Cape of Good Hope, are the two greatest and most important events recorded in the history of mankind.'\n\nWhat is Smith suggesting about the significance of European exploration?",
+    choices: [
+        "It was primarily motivated by religious goals",
+        "It had a profound economic and global impact",
+        "It led to the decline of European powers",
+        "It primarily benefited indigenous populations"
+    ],
+    correctAnswer: 1,
+    explanation: "Adam Smith emphasizes the global economic impact of exploration and the opening of new trade routes."
+},
+{
+    question: "Excerpt from John Cabot’s Letter to Henry VII (1497): \n\n'The land that we have discovered is filled with resources. Your Majesty may expect great wealth from this enterprise.'\n\nWhat motivation for exploration does this excerpt highlight?",
+    choices: [
+        "Scientific curiosity",
+        "Economic profit and resource acquisition",
+        "Religious conversion",
+        "Establishing alliances with native peoples"
+    ],
+    correctAnswer: 1,
+    explanation: "Cabot’s letter reflects the economic motivations of European exploration, emphasizing wealth from new resources."
+},
+{
+    question: "Excerpt from the writings of Prince Henry the Navigator (1444): \n\n'We shall spread the Christian faith and bring enlightenment to the heathens in the lands beyond.'\n\nWhat motivation for exploration does Prince Henry emphasize?",
+    choices: [
+        "Scientific discovery",
+        "Religious conversion and missionary work",
+        "Military conquest",
+        "Establishing global trade routes"
+    ],
+    correctAnswer: 1,
+    explanation: "Prince Henry’s writings highlight the goal of spreading Christianity as a key motivation for European exploration."
+},
+{
+    question: "Excerpt from Samuel de Champlain’s Description of New France (1608): \n\n'I found the place most suitable to build a settlement, with fertile soil and a nearby river to support trade and agriculture.'\n\nWhat does Champlain’s description suggest about European settlement goals?",
+    choices: [
+        "They focused solely on resource extraction",
+        "They prioritized establishing permanent settlements for trade and agriculture",
+        "They were driven by military alliances with indigenous peoples",
+        "They avoided altering native ecosystems"
+    ],
+    correctAnswer: 1,
+    explanation: "Champlain’s account reflects the goal of creating settlements that could support trade and agriculture."
+},
+{
+    question: "Excerpt from a Dutch East India Company Report (1620): \n\n'The demand for spices in Europe is insatiable. By controlling trade routes, we can ensure the prosperity of our nation.'\n\nWhat does this excerpt reveal about the role of joint-stock companies in exploration?",
+    choices: [
+        "They were primarily focused on religious conversion",
+        "They were key in financing and controlling global trade",
+        "They avoided conflicts with other European powers",
+        "They prioritized scientific research"
+    ],
+    correctAnswer: 1,
+    explanation: "The Dutch East India Company, like other joint-stock companies, played a central role in financing exploration and dominating trade routes."
+},
+{
+    question: "Excerpt from the Mayflower Compact (1620): \n\n'We solemnly and mutually, in the presence of God, covenant and combine ourselves together into a civil body politic.'\n\nWhat does this document reveal about the goals of early settlers?",
+    choices: [
+        "They sought to establish self-governance and community",
+        "They were focused on economic conquest",
+        "They intended to avoid contact with indigenous peoples",
+        "They planned to create a military colony"
+    ],
+    correctAnswer: 0,
+    explanation: "The Mayflower Compact reflects the settlers’ desire to establish self-governance and a sense of community."
+}
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+
+        const questionContainer = document.getElementById("question-container");
+        const feedbackContainer = document.getElementById("feedback");
+        const nextButton = document.getElementById("next-button");
+
+        function loadQuestion() {
+            const question = questions[currentQuestion];
+            questionContainer.innerHTML = `
+                <h2>${question.question}</h2>
+                ${question.choices.map((choice, index) => `
+                    <button class="choice-button" data-choice="${index}">${choice}</button>
+                `).join('')}
+            `;
+            feedbackContainer.innerHTML = "";
+            nextButton.style.display = "none";
+
+            const choiceButtons = document.querySelectorAll(".choice-button");
+            choiceButtons.forEach(button => {
+                button.addEventListener("click", (e) => {
+                    const userAnswer = parseInt(e.target.getAttribute("data-choice"));
+                    checkAnswer(userAnswer);
+                });
+            });
+        }
+
+        function checkAnswer(userAnswer) {
+            const question = questions[currentQuestion];
+            const isCorrect = userAnswer === question.correctAnswer;
+            feedbackContainer.innerHTML = `
+                <p>${isCorrect ? "Correct!" : "Incorrect."}</p>
+                <p>${isCorrect ? "" : `The correct answer is: ${question.choices[question.correctAnswer]}`}</p>
+                <p>${question.explanation}</p>
+            `;
+            if (isCorrect) score++;
+            nextButton.style.display = "block";
+
+            // Disable buttons after selecting an answer
+            const choiceButtons = document.querySelectorAll(".choice-button");
+            choiceButtons.forEach(button => button.disabled = true);
+        }
+
+        nextButton.addEventListener("click", () => {
+            currentQuestion++;
+            if (currentQuestion < questions.length) {
+                loadQuestion();
+            } else {
+                questionContainer.innerHTML = `
+                    <h2>Quiz Complete!</h2>
+                    <p>Your Score: ${score} / ${questions.length}</p>
+                `;
+                nextButton.style.display = "none";
+            }
+        });
+
+        // Load the first question on startup
+        loadQuestion();
+    </script>
+</body>
+</html>
